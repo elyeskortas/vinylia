@@ -1,13 +1,14 @@
 "use client"
 
-import { useChat } from "@ai-sdk/react"
-import { Button } from "@/components/ui/button" 
-import { Input } from "@/components/ui/input" 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card" 
-import { ScrollArea } from "@/components/ui/scroll-area" 
+import { useChat } from "@ai-sdk/react" // <-- C'est l'importation correcte
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ScrollArea } from "@/components/ui/scroll-area"
+
 export default function ChatbotClient() {
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
-    api: "/api/chat", // La route API que nous venons de créer
+    api: "/api/chat",
   })
 
   return (
