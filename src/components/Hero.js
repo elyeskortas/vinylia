@@ -1,4 +1,4 @@
-import vinyls from "../../data/vinyls"
+import vinyls from "@/data/vinyls"
 import HeroVinylsClient from "./HeroVinylsClient"
 
 export default function Hero() {

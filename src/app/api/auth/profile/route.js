@@ -1,6 +1,6 @@
-import { connectToDB } from "../../../../../lib/mongodb.js"
-import User from "../../../../../models/user.js"
-import { hashPassword, generateToken, validateEmail, validatePassword } from "../../../../../lib/auth.js"
+import { connectToDB } from "@/lib/mongodb.js"
+import User from "@/models/user.js"
+import { hashPassword, generateToken, validateEmail, validatePassword } from "@/lib/auth.js"
 import { cookies } from "next/headers"
 
 export async function POST(request) {
