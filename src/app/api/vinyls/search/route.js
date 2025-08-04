@@ -1,6 +1,6 @@
-import { connectToDB } from "@/lib/mongodb.js";
-import Vinyl from "@/models/vinyl.js";
-import staticVinyls from "@/data/vinyls.js" // Importez vos données statiques
+import { connectToDB } from "@/lib/mongodb.js"
+import Vinyl from "@/models/vinyl.js"
+import staticVinyls from "@/data/vinyls.js"
 
 export async function GET(request) {
   try {

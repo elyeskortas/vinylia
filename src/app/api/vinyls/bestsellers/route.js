@@ -1,6 +1,6 @@
-import { connectToDB } from "@/lib/mongodb.js";
-import Vinyl from "@/models/vinyl.js";
-import vinyls from "data/vinyls";
+import { connectToDB } from "@/lib/mongodb.js"
+import Vinyl from "@/models/vinyl.js"
+import vinyls from "@/data/vinyls.js"
 
 export async function GET() {
   try {

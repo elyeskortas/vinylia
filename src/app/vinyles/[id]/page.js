@@ -1,6 +1,6 @@
-import { getVinylById } from "../../../../lib/actions/vinyls"
+import { getVinylById } from "@/lib/actions/vinyls"
 import VinylDetailsClient from "./VinylDetailsClient"
-import vinyls from "../../../../data/vinyls"
+import vinyls from "@/data/vinyls.js" // <-- Chemin corrigé ici
 
 export function generateStaticParams() {
   // Générer les routes statiques basées sur tes données

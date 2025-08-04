@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/mongodb.js";
-import User from "@/models/user.js";
+import { connectToDB } from "@/lib/mongodb.js"
+import User from "@/models/user.js"
 import { verifyPassword, generateToken, validateEmail } from "@/lib/auth.js"
 import { cookies } from "next/headers"
 
