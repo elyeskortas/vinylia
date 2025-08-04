@@ -1,6 +1,6 @@
 // app/articles/page.js
 import Link from "next/link";
-import articles from "../../../data/articles";
+import articles from "@/data/articles";
 
 export default function ArticlesPage() {
   return (
