@@ -18,7 +18,7 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".", // <-- MODIFIÉ ICI
+    "baseUrl": "./src", // <-- MODIFIÉ ICI pour pointer vers le dossier src
     "paths": {
       "@/*": ["./*"]
     }
