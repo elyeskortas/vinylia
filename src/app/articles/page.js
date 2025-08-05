@@ -1,6 +1,5 @@
-// app/articles/page.js
-import Link from "next/link";
-import articles from "@/data/articles";
+import Link from "next/link"
+import articles from "@/data/articles"
 
 export default function ArticlesPage() {
   return (
@@ -19,7 +18,7 @@ export default function ArticlesPage() {
               <div className="card-body">
                 <h5 className="card-title">{article.title}</h5>
                 <Link href={`/articles/${article.id}`} className="btn btn-primary mt-2">
-                  Lire l'article
+                  Lire l&apos;article
                 </Link>
               </div>
             </div>
@@ -27,5 +26,5 @@ export default function ArticlesPage() {
         ))}
       </div>
     </main>
-  );
+  )
 }

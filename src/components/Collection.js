@@ -1,3 +1,5 @@
+import Link from "next/link" // Importez Link
+
 export default function Collection() {
   return (
     <section className="collection bg-light py-5">
@@ -10,10 +12,13 @@ export default function Collection() {
           <div className="col-md-6">
             <h3>The Beatles – The Vinyl Collection 2025 Edition</h3>
             <p>Une édition limitée regroupant tous les albums studio remastérisés...</p>
-            <a href="#" className="btn btn-dark mt-3">Shop Collection</a>
+            {/* Correction: Utilisation de Link au lieu de <a> */}
+            <Link href="/vinyles?category=Collection" className="btn btn-dark mt-3">
+              Shop Collection
+            </Link>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { useAuth } from "../../../context/auth-context"
+import { useAuth } from "@/context/auth-context" // Chemin corrigé
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
@@ -106,7 +106,7 @@ export default function LoginPage() {
                 <p className="mb-0">
                   Pas encore de compte ?{" "}
                   <Link href="/auth/register" className="text-decoration-none">
-                    S'inscrire
+                    S&apos;inscrire
                   </Link>
                 </p>
               </div>

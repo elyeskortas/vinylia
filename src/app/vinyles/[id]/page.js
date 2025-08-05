@@ -1,6 +1,7 @@
 import { getVinylById } from "@/lib/actions/vinyls"
 import VinylDetailsClient from "./VinylDetailsClient"
-import vinyls from "@/data/vinyls.js" // <-- Chemin corrigé ici
+import vinyls from "@/data/vinyls.js"
+import Link from "next/link" // Importez Link
 
 export function generateStaticParams() {
   // Générer les routes statiques basées sur tes données
@@ -18,9 +19,10 @@ export default async function VinylPage({ params }) {
       <main className="container py-5">
         <h1>Erreur</h1>
         <p>ID non valide ou non défini: {id}</p>
-        <a href="/vinyles" className="btn btn-primary">
+        {/* Correction: Utilisation de Link au lieu de <a> */}
+        <Link href="/vinyles" className="btn btn-primary">
           Retour à la liste
-        </a>
+        </Link>
       </main>
     )
   }
@@ -32,10 +34,11 @@ export default async function VinylPage({ params }) {
       return (
         <main className="container py-5">
           <h1>Vinyle non trouvé</h1>
-          <p>Aucun vinyle trouvé pour l'ID: {id}</p>
-          <a href="/vinyles" className="btn btn-primary">
+          <p>Aucun vinyle trouvé pour l&apos;ID: {id}</p> {/* Correction: &apos; */}
+          {/* Correction: Utilisation de Link au lieu de <a> */}
+          <Link href="/vinyles" className="btn btn-primary">
             Retour à la liste
-          </a>
+          </Link>
         </main>
       )
     }
@@ -57,9 +60,10 @@ export default async function VinylPage({ params }) {
       <main className="container py-5">
         <h1>Erreur</h1>
         <p>Une erreur est survenue lors du chargement du vinyle.</p>
-        <a href="/vinyles" className="btn btn-primary">
+        {/* Correction: Utilisation de Link au lieu de <a> */}
+        <Link href="/vinyles" className="btn btn-primary">
           Retour à la liste
-        </a>
+        </Link>
       </main>
     )
   }

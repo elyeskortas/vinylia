@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { useAuth } from "../../../context/auth-context"
+import { useAuth } from "@/context/auth-context" // Chemin corrigé
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
@@ -156,7 +156,7 @@ export default function RegisterPage() {
                     </>
                   ) : (
                     <>
-                      <i className="bi bi-person-plus"></i> S'inscrire
+                      <i className="bi bi-person-plus"></i> S&apos;inscrire
                     </>
                   )}
                 </button>

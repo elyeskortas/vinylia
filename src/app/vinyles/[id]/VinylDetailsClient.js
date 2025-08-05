@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import { useCart } from "@/context/cart-context"
+import Link from "next/link" // Importez Link
 
 export default function VinylDetailsClient({ vinyl }) {
   const { addToCart } = useCart()
@@ -50,9 +51,10 @@ export default function VinylDetailsClient({ vinyl }) {
             {added ? "Ajouté au panier !" : vinyl.stock === 0 ? "Rupture de stock" : "Ajouter au panier"}
           </button>
 
-          <a href="/vinyles" className="btn btn-outline-secondary">
+          {/* Correction: Utilisation de Link au lieu de <a> */}
+          <Link href="/vinyles" className="btn btn-outline-secondary">
             Retour à la liste
-          </a>
+          </Link>
         </div>
       </div>
 

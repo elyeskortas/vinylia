@@ -37,6 +37,7 @@ export default function SearchClient({ query, vinyls, error }) {
     }
 
     const inWishlist = wishlist.some((item) => item.id === vinylId)
+
     if (inWishlist) {
       removeFromWishlist(vinylId)
     } else {
@@ -47,36 +48,30 @@ export default function SearchClient({ query, vinyls, error }) {
   return (
     <div className="container py-5">
       <h2 className="mb-4">
-        Résultats de recherche pour "{query}"
+        Résultats de recherche pour &quot;{query}&quot;
         {query && vinyls.length > 0 && <span className="text-muted ms-2">({vinyls.length} trouvés)</span>}
       </h2>
-
       {error && (
         <div className="alert alert-danger" role="alert">
           <i className="bi bi-exclamation-triangle"></i> {error}
         </div>
       )}
-
       {!query && (
         <div className="alert alert-info" role="alert">
           Veuillez entrer un terme de recherche dans la barre de navigation.
         </div>
       )}
-
       {query && !error && vinyls.length === 0 && (
         <div className="alert alert-warning" role="alert">
-          Aucun vinyle trouvé pour "{query}".
+          Aucun vinyle trouvé pour &quot;{query}&quot;.
         </div>
       )}
-
       {vinyls.length > 0 && (
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {vinyls.map((vinyl) => {
             const vinylId = vinyl._id?.toString() || vinyl.id
             const productImage = vinyl.img || vinyl.image
-
             const inWishlist = wishlist.some((item) => item.id === vinylId)
-
             return (
               <div className="col" key={vinylId}>
                 <div className="card product-card h-100 shadow-sm position-relative">
@@ -93,7 +88,6 @@ export default function SearchClient({ query, vinyls, error }) {
                       />
                     </div>
                   </Link>
-
                   {/* Bouton Wishlist */}
                   <button
                     onClick={(e) => handleWishlistClick(e, vinyl)}
@@ -113,7 +107,6 @@ export default function SearchClient({ query, vinyls, error }) {
                   >
                     <i className={`bi ${inWishlist ? "bi-heart-fill" : "bi-heart"}`}></i>
                   </button>
-
                   <div className="card-body d-flex flex-column justify-content-between">
                     <div>
                       <h5 className="card-title text-center" style={{ fontSize: "1rem" }}>
@@ -146,7 +139,6 @@ export default function SearchClient({ query, vinyls, error }) {
           })}
         </div>
       )}
-
       {!isAuthenticated && (
         <div className="alert alert-info mt-4">
           <i className="bi bi-info-circle"></i>
