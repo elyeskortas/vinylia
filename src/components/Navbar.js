@@ -156,6 +156,13 @@ export default function Navbar() {
                     Nous Contacter
                   </Link>
                 </li>
+                {/* AJOUT DU LIEN CHATBOT */}
+                <li className="nav-item">
+                  <Link href="/chatbot" className="nav-link">
+                    <i className="bi bi-chat-dots"></i> Chatbot
+                  </Link>
+                </li>
+                {/* FIN AJOUT DU LIEN CHATBOT */}
                 <li className="nav-item">
                   <Link href="/wishlist" className="nav-link">
                     <i className="bi bi-heart"></i> Wishlist ({wishlist.length})
