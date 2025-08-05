@@ -55,13 +55,15 @@ export default function ChatbotClient() {
       </CardContent>
       <CardFooter className="border-t p-4">
         <form onSubmit={handleSubmit} className="flex w-full space-x-2">
+          {" "}
+          {/* C'est ici que handleSubmit doit être */}
           <Input
             className="flex-1"
             value={input}
             placeholder="Posez une question sur les vinyles..."
             onChange={handleInputChange}
             disabled={isLoading}
-            id="chat-input" // L'attribut 'id' a été ajouté ici
+            id="chat-input"
           />
           <Button type="submit" disabled={isLoading}>
             Envoyer

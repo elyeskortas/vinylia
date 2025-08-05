@@ -1,20 +1,21 @@
-// lib/mongodb.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose"
 
-let isConnected = false;
+let isConnected = false
 
 export async function connectToDB() {
-  if (isConnected) return;
+  if (isConnected) return
 
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
-    isConnected = true;
-    console.log('MongoDB connected');
+      serverSelectionTimeoutMS: 30000, // Augmenter le timeout de sélection du serveur à 30 secondes
+      socketTimeoutMS: 45000, // Augmenter le timeout des sockets à 45 secondes
+    })
+    isConnected = true
+    console.log("MongoDB connected")
   } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error;
+    console.error("MongoDB connection error:", error)
+    throw error
   }
 }
