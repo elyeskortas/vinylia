@@ -5,11 +5,54 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { useState, useRef, useEffect } from "react" // Importez useState, useRef, useEffect
 
 export default function ChatbotClient() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
+  console.log("ChatbotClient: Composant rendu côté client.")
+
+  // Gérer l'état de l'input manuellement
+  const [currentInput, setCurrentInput] = useState("") // Nouvelle variable d'état pour l'input
+  const messagesEndRef = useRef(null) // Ajoutez useRef
+
+  const { messages, isLoading, error, sendMessage } = useChat({
     api: "/api/chat",
   })
+
+  // Logs pour vérifier les valeurs des props
+  console.log("ChatbotClient: Valeur actuelle de 'currentInput' (manuelle):", currentInput)
+  console.log("ChatbotClient: Type de 'setCurrentInput':", typeof setCurrentInput)
+  console.log("ChatbotClient: 'setCurrentInput' est-il défini?", setCurrentInput !== undefined)
+  console.log("ChatbotClient: Résultat complet de useChat:", { messages, isLoading, error, sendMessage }) // Log simplifié
+
+  // Fonction de soumission
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    console.log("Client-side: handleFormSubmit appelé !")
+
+    const trimmedInput = String(currentInput).trim() // Utilisez currentInput
+
+    console.log("Client-side: Valeur de l'input avant envoi (après trim):", trimmedInput)
+    console.log("Client-side: Tableau des messages actuel avant envoi:", messages)
+
+    if (trimmedInput) {
+      sendMessage({ text: trimmedInput })
+      console.log("Client-side: Message envoyé:", { text: trimmedInput })
+      setCurrentInput("") // Vider l'input après l'envoi
+    } else {
+      console.log("Client-side: Tentative d'envoi d'un message vide, action empêchée.")
+    }
+  }
+
+  // Fonction pour gérer le changement de l'input
+  const handleInputChange = (e) => {
+    setCurrentInput(e.target.value)
+  }
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [messages]) // Ajoutez useEffect
 
   return (
     <Card className="w-full max-w-2xl mx-auto h-[70vh] flex flex-col">
@@ -29,7 +72,12 @@ export default function ChatbotClient() {
                   }`}
                 >
                   <p className="font-semibold capitalize">{m.role === "user" ? "Vous" : "Vinylia Bot"}</p>
-                  <p>{m.content}</p>
+                  {m.parts.map((part, partIndex) => (
+                    <span key={partIndex}>
+                      {part.type === "text" ? part.text : null}
+                      {/* Vous pouvez ajouter d'autres types de parties ici si nécessaire, par exemple pour les images */}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))
@@ -52,16 +100,15 @@ export default function ChatbotClient() {
             </div>
           )}
         </ScrollArea>
+        <div ref={messagesEndRef} /> {/* Ajoutez la référence messagesEndRef */}
       </CardContent>
       <CardFooter className="border-t p-4">
-        <form onSubmit={handleSubmit} className="flex w-full space-x-2">
-          {" "}
-          {/* C'est ici que handleSubmit doit être */}
+        <form onSubmit={handleFormSubmit} className="flex w-full space-x-2">
           <Input
             className="flex-1"
-            value={input}
+            value={currentInput} // Utilisez la nouvelle variable d'état
             placeholder="Posez une question sur les vinyles..."
-            onChange={handleInputChange}
+            onChange={handleInputChange} // Utilisez la nouvelle fonction de gestion du changement
             disabled={isLoading}
             id="chat-input"
           />
